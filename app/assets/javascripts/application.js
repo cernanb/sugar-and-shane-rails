@@ -20,5 +20,5 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $("#example").dataTable()
+  $("#items").dataTable()
 })
