@@ -1,0 +1,26 @@
+<h1>Items</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Listing Price</th>
+      <th scope="col">Sold Price</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Bought</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+        <tr>
+        <th scope="row"><%= item.name %></th>
+        <td><%= item.cost.format %></td>
+        <td><%= item.listing_price.format %></td>
+        <td><%= sold_price = item.sold_price ? item.sold_price.format : 'Not sold'  %></td>
+        <td><%= item.brand.name  %></td>
+        <td><%= item.store.name  %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New Item", new_item_path, class: "btn btn-primary" %>
