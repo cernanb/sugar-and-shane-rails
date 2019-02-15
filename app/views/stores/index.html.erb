@@ -1,0 +1,6 @@
+<div class='text-center'>
+    <h2>My Stores</h2>
+    <% @stores.each do |store| %>
+        <h3><%= link_to store.name, store_path(store) %>
+    <% end %>
+</div>

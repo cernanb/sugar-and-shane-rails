@@ -26,7 +26,7 @@
           <% end %>
         </td>
         <td><%= item.brand.name  %></td>
-        <td><%= item.store.name  %></td>
+        <td><%= link_to item.store.name, store_path(item.store)  %></td>
         </tr>
         
         <div class="modal fade" id="modal-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

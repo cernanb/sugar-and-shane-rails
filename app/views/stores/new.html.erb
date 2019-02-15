@@ -1,0 +1,8 @@
+<h2>Create Store</h2>
+<%= form_with model: @store do |f| %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Create Store', :class => 'btn btn-success' %>
+<% end %>

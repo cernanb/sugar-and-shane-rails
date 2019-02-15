@@ -1,4 +1,8 @@
 class StoresController < ApplicationController
+  def index
+    @stores = Store.all
+  end
+
   def new
     @store = Store.new
   end
@@ -11,6 +15,10 @@ class StoresController < ApplicationController
     else
       redirect_to new_store_path
     end
+  end
+
+  def show
+    @store = Store.find(params[:id])
   end
 
   private
