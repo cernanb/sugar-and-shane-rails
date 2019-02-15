@@ -9,8 +9,18 @@ class ItemsController < ApplicationController
     @store = @item.build_store
   end
 
+  def update
+    @item = Item.find_by(id: params[:id])
+    if @item.update(item_params)
+      redirect_to items_path
+    else
+      redirect_to items_path
+    end
+  end
+
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item.save
       redirect_to items_path
     else

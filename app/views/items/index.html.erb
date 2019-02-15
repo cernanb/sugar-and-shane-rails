@@ -16,10 +16,40 @@
         <th scope="row"><%= item.name %></th>
         <td><%= item.cost.format %></td>
         <td><%= item.listing_price.format %></td>
-        <td><%= sold_price = item.sold_price ? item.sold_price.format : 'Not sold'  %></td>
+        <td>
+          <% if item.sold_price %>
+            <%= item.sold_price.format %>
+          <% else%>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%= item.id %>">
+              Sold
+            </button>
+          <% end %>
+        </td>
         <td><%= item.brand.name  %></td>
         <td><%= item.store.name  %></td>
         </tr>
+        
+        <div class="modal fade" id="modal-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sold <%= item.name %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form_for item do |f| %>
+                  <%= f.number_field :sold_price_cents, :value => '' %>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= f.submit 'Save', :class => 'btn btn-success' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
     <% end %>
   </tbody>
 </table>
