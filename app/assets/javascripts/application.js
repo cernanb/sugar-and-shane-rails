@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require activestorage
-//= require jquery3
+//= require jquery2
 //= require datatables
 //= require popper
 //= require bootstrap
