@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'money-rails', '~>1.12'
 gem 'jquery-datatables'
+gem 'rack-cors', require: 'rack/cors'
+gem 'active_model_serializers'
 
 
 

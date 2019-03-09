@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
     @items = Item.all
+    respond_to do |f|
+      f.html
+      f.json { render json: @items }
+    end
   end
 
   def new
@@ -12,7 +18,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     if @item.update(item_params)
-      redirect_to items_path
+      render json: @item
     else
       redirect_to items_path
     end
@@ -21,7 +27,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to items_path
+      render json: @item
     else
       redirect_to new_item_path
     end
@@ -29,6 +35,6 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :cost_cents, :listing_price_cents, :brand_id, :store_id, :sold_price_cents, :brand_attributes => [:name], :store_attributes => [:name])
+      params.require(:item).permit(:name, :cost, :listing_price, :brand_id, :store_id, :sold_price, :listing_date, :brand_attributes => [:name], :store_attributes => [:name])
     end
 end
