@@ -1,10 +1,7 @@
 class StoresController < ApplicationController
   def index
     @stores = Store.all
-    respond_to do |f|
-      f.html
-      f.json { render json: @stores}
-    end
+    render json: @stores
   end
 
   def new

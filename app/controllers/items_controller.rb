@@ -2,10 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    respond_to do |f|
-      f.html
-      f.json { render json: @items }
-    end
+    render json: @items 
   end
 
   def new
